@@ -14,16 +14,10 @@ module "iam" {
   source ="git@github.com:satishkumarkrishnan/Terraform_IAM.git?ref=main"
 }
 
-module "vpc" {
-  source ="git@github.com:satishkumarkrishnan/terraform-aws-vpc.git?ref=main"
-}
 
-module "asg" {
-  source="git@github.com:satishkumarkrishnan/terraform-aws-asg.git?ref=main" 
-}
 
-module "kms" {
-  source ="git@github.com:satishkumarkrishnan/Terraform-KMS.git?ref=main"  
+module "cw" {
+  source ="git@github.com:satishkumarkrishnan/Terraform-CloudWatch.git?ref=main" 
 }
 
 # TF code MSK cluster
