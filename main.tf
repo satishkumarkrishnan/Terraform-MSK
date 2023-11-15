@@ -16,16 +16,14 @@ module "iam" {
 
 module "vpc" {
   source ="git@github.com:satishkumarkrishnan/terraform-aws-vpc.git?ref=main"
-  }
+}
 
 module "asg" {
   source="git@github.com:satishkumarkrishnan/terraform-aws-asg.git?ref=main" 
-  depends_on = [module.vpc ]
 }
 
 module "kms" {
-  source ="git@github.com:satishkumarkrishnan/Terraform-KMS.git?ref=main"
-  depends_on = [module.asg]
+  source ="git@github.com:satishkumarkrishnan/Terraform-KMS.git?ref=main"  
 }
 
 # TF code MSK cluster
