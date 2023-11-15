@@ -42,4 +42,5 @@ resource "aws_s3_object" "object" {
   lifecycle {
     prevent_destroy = false
   }
+  depends_on = [module.asg]
 }
