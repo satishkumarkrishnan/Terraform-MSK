@@ -14,8 +14,6 @@ module "iam" {
   source ="git@github.com:satishkumarkrishnan/Terraform_IAM.git?ref=main"
 }
 
-
-
 module "cw" {
   source ="git@github.com:satishkumarkrishnan/Terraform-CloudWatch.git?ref=main" 
 }
@@ -67,7 +65,8 @@ resource "aws_msk_cluster" "tokyo_msk_cluster" {
 #      }
       s3 {
         enabled = true
-        bucket  = aws_s3_bucket.kms_encrypted.id
+        bucket  = module.cw.s3_bucket
+        #bucket  = aws_s3_bucket.kms_encrypted.id
         prefix  = "logs/msk-"
       }
     }
