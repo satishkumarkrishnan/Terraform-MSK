@@ -27,8 +27,8 @@ resource "aws_msk_cluster" "tokyo-msk-cluster" {
   broker_node_group_info {
     instance_type = "kafka.m5.large"
     client_subnets = [
-	   module.cw.vpc_fe_subnet.vpc_az[0].id,
-	   module.cw.vpc_fe_subnet.vpc_az[1].id,      
+	   module.cw.vpc_fe_subnet.vpc_az.id,
+	   module.cw.vpc_be_subnet.vpc_az.id,      
     ]
     storage_info {
       ebs_storage_info {
