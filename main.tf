@@ -12,6 +12,7 @@ terraform {
 #TF code for importing IAM Role
 module "iam" {
   source ="git@github.com:satishkumarkrishnan/Terraform_IAM.git?ref=main"
+  depends_on = [module.cw]
 }
 
 module "cw" {
@@ -75,6 +76,7 @@ resource "aws_msk_cluster" "tokyo_msk_cluster" {
   tags = {
     foo = "bar"
   }
+  depends_on = [module.cw]
 }
 
 
