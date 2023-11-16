@@ -39,7 +39,7 @@ resource "aws_msk_cluster" "tokyo_msk_cluster" {
   }
 
   encryption_info {
-    encryption_at_rest_kms_key_arn = module.cw.kms_arn
+    encryption_at_rest_kms_key_arn = module.cw.kms_id
   }
 
   open_monitoring {
