@@ -19,8 +19,8 @@ module "cw" {
 }
 
 # TF code MSK cluster
-resource "aws_msk_cluster" "tokyo_msk_cluster" {
-  cluster_name           = "tokyo_msk_cluster"
+resource "aws_msk_cluster" "tokyo-msk-cluster" {
+  cluster_name           = "tokyo-msk-cluster"
   kafka_version          = "3.2.0"
   number_of_broker_nodes = 3
 
