@@ -11,8 +11,7 @@ terraform {
 
 #TF code for importing IAM Role
 module "iam" {
-  source ="git@github.com:satishkumarkrishnan/Terraform_IAM.git?ref=main"
-  depends_on = [module.cw]
+  source ="git@github.com:satishkumarkrishnan/Terraform_IAM.git?ref=main"  
 }
 
 module "cw" {
