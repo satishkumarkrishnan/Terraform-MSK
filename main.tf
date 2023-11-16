@@ -14,12 +14,17 @@ module "iam" {
   source ="git@github.com:satishkumarkrishnan/Terraform_IAM.git?ref=main"  
 }
 
+module "vpc" {
+  source ="git@github.com:satishkumarkrishnan/terraform-aws-vpc.git?ref=main"
+}
+
 module "cw" {
-  source ="git@github.com:satishkumarkrishnan/Terraform-CloudWatch.git?ref=main" 
+  source ="git@github.com:satishkumarkrishnan/Terraform-CloudWatch.git?ref=main"
+  depends_on = [module.vpc]
 }
 
 # TF code MSK cluster
-/*resource "aws_msk_cluster" "tokyo_msk_cluster" {
+resource "aws_msk_cluster" "tokyo_msk_cluster" {
   cluster_name           = "tokyo_msk_cluster"
   kafka_version          = "3.2.0"
   number_of_broker_nodes = 3
@@ -27,15 +32,15 @@ module "cw" {
   broker_node_group_info {
     instance_type = "kafka.m5.large"
     client_subnets = [
-	  module.cw.vpc_fe_subnet,
-	  module.cw.vpc_be_subnet,      
+	  module.asg.vpc_fe_subnet,
+	  module.asg.vpc_be_subnet,      
     ]
     storage_info {
       ebs_storage_info {
         volume_size = 1000
       }
     }
-    security_groups = [module.cw.vpc_fe_sg]
+    security_groups = [module.asg.vpc_fe_sg]
   }
 
   encryption_info {
@@ -74,6 +79,5 @@ module "cw" {
 
   tags = {
     foo = "bar"
-  }
-  depends_on = [module.cw]
-}*/
+  }  
+}
