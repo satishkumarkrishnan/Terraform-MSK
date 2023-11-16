@@ -19,8 +19,7 @@ module "vpc" {
 }
 
 module "cw" {
-  source ="git@github.com:satishkumarkrishnan/Terraform-CloudWatch.git?ref=main"
-  depends_on = [module.vpc]
+  source ="git@github.com:satishkumarkrishnan/Terraform-CloudWatch.git?ref=main"  
 }
 
 # TF code MSK cluster
